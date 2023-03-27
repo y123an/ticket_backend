@@ -4,11 +4,13 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const cors = require("cors");
-const port = 3000;
+const port =4000;
 const fs = require("fs");
 
 app.use(express.static(__dirname + "/public"));
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:4000","https://kuret-app-api.onrender.com/"]
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
