@@ -6,11 +6,10 @@ const multer = require("multer");
 const cors = require("cors");
 const port =4000;
 const fs = require("fs");
+require('dotenv').config({path: __dirname + '/.env'});
 
 app.use(express.static(__dirname + "/public"));
-app.use(cors({
-  origin:["http://localhost:4000","https://kuret-app-api.onrender.com/"]
-}));
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -42,7 +41,7 @@ const tredingSpecials = mongoose.model("trendingSpecials", imgSchema);
 const connect = async () => {
   await mongoose
     .connect(
-      "mongodb+srv://Ebishu:Yoniab23@cluster0.vx1dviu.mongodb.net/ticketwebsitedatabase?retryWrites=true&w=majority",
+      process.env.MONGODB,
       { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => console.log("connected successfully"))
