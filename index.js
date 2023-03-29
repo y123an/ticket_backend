@@ -46,17 +46,6 @@ const connect = async () => {
     )
     .then(() => console.log("connected successfully"))
     .catch((err) => console.log("it has an error", err));
-  fs.readdir(__dirname + "/uploads/specials/trending", (err, files) => {
-    const saveNewMovies = tredingConcerts({
-      name: files[0],
-      img: {
-        data: fs.readFileSync(
-          __dirname + "/uploads/specials/trending/" + files[0]
-        ),
-      },
-    });
-    saveNewMovies.save().catch((err) => console.log(err));
-  });
 };
 connect();
 
