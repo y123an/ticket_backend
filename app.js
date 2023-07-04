@@ -16,10 +16,6 @@ app.use(bodyParser.json());
 
 const imgSchema = new mongoose.Schema({
   name: String,
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
 });
 
 const movies = mongoose.model("movies", imgSchema);
@@ -51,6 +47,7 @@ connect();
 
 app.get("/getnewmoviesdata", async (req, res) => {
   const allData = await newMovies.find();
+  console.log(allData)
   res.json(allData);
 });
 
@@ -85,6 +82,13 @@ app.get("/gettrendingspecialsdata", async (req, res) => {
   const allData = await tredingSpecials.find();
   res.json(allData);
 });
+
+app.get("/getimage",(req,res)=>{
+  imgname = req.query.name
+  console.log("hello")
+  console.log(imgname)
+  res.download("./uploads/" + imgname);
+})
 
 app.listen(port, () => {
   console.log("server running successfully");
