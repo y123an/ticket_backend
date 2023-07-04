@@ -8,11 +8,6 @@ const port =4000;
 const fs = require("fs");
 require('dotenv').config({path: __dirname + '/.env'});
 
-const corsOptions ={
-  origin:'http://localhost:3000', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
 app.use(express.static(__dirname + "/public"));
 app.use(cors(corsOptions));
 
