@@ -9,7 +9,7 @@ const fs = require("fs");
 require('dotenv').config({path: __dirname + '/.env'});
 
 app.use(express.static(__dirname + "/public"));
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
